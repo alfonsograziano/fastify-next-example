@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: Test swagger
+  description: Testing the Fastify swagger API
+  version: 0.1.0
+components:
+  schemas: {}
+paths:
+  /:
+    get:
+      tags:
+        - Default
+      responses:
+        "200":
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  anything:
+                    type: string
+  /some-route/{id}:
+    put:
+      summary: qwerty
+      tags:
+        - user
+        - code
+      description: post some data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hello:
+                  type: string
+                obj:
+                  type: object
+                  properties:
+                    some:
+                      type: string
+      parameters:
+        - schema:
+            type: string
+          in: path
+          name: id
+          required: true
+          description: user id
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                description: Successful response
+                type: object
+                properties:
+                  hello:
+                    type: string
+        default:
+          description: Default response
+          content:
+            application/json:
+              schema:
+                description: Default response
+                type: object
+                properties:
+                  foo:
+                    type: string
+externalDocs:
+  url: https://swagger.io
+  description: Find more info here
